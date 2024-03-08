@@ -1,0 +1,196 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "ipc": false,
+  "height": 36,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "modules-right": ["network", "wireplumber", "backlight", "tray", "clock"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-left": ["battery", "disk", "memory", "temperature", "cpu"],
+  "hyprland/window": {
+    "format": "{}"
+  },
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5], // 7 workspaces by default on every monitor
+      "HDMI-A-1": [6, 7, 8, 9, 10] // but only three on HDMI-A-1
+    }
+  },
+  "tray": {
+    "show-passive-items": true,
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "󰻠 {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage}% - {avg_frequency}GHz",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "tooltip": false
+    // "format": "󰻠 {usage} {avg_frequency}%"
+  },
+  "temperature": {
+    "thermal-zone": 1,
+    "interval": 1,
+    "format": "󰔏 {temperatureC}°C",
+    "tooltip": false
+  },
+  "memory": {
+    "interval": 1,
+    "format": "󰍛 {}%",
+    "tooltip": false
+  },
+  "disk": {
+    "interval": 1,
+    "format": "󰋊 {}%",
+    "tooltip": false
+  },
+  "clock": {
+    "format": "{:󰥔 %I:%M %p}",
+    "format-alt": "{:󰸘 %a, %b %e}",
+    "tooltip": false
+    // "tooltip-format": "<small>{calendar}</small>"
+    // "calendar": {
+    //   "mode": "year",
+    //   "mode-mon-col": 3,
+    //   "weeks-pos": "right",
+    //   "on-scroll": 1,
+    //   "on-click-right": "mode",
+    //   "format": {
+    //     "months": "<span color='#f7768e'><b>{}</b></span>",
+    //     "days": "<span color='#7da6ff'><b>{}</b></span>",
+    //     "weeks": "<span color='#b9f27c'><b>W{}</b></span>",
+    //     "weekdays": "<span color='#e0af68'><b>{}</b></span>",
+    //     "today": "<span color='#f7768e'><b><i>{}</i></b></span>"
+    //   }
+    // }
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip": false,
+    "on-click-right": "xbacklight -dec 5",
+    "on-click": "xbacklight -inc 5",
+    "min-length": 6
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "on-croll-up": "helvum",
+    "format-muted": "󰖁 {volume}%",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "tooltip": false,
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggl",
+    "on-click-right": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl set-mute @DEFAULT_AUDIO_SINK@ 0",
+    "on-click": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1 && wpctl set-mute @DEFAULT_AUDIO_SINK@ 0"
+  },
+  "battery": {
+    "interval": 1,
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰚥 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["󱃍", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip": false
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "interval": 1,
+    // "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "format-wifi": "{icon} {signalStrength}% - 󰁆 {bandwidthDownBytes} - 󰁞 {bandwidthUpBytes}",
+    "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+    "format-linked": "{ifname} (No IP) 󰈀",
+    "format-disconnected": "Disconnected ⚠",
+    "tooltip": false,
+
+    // "tooltip-format": "{essid} - {ifname} via {gwaddr}"
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+    // "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+  },
+  "mpd": {
+    "interval": 1,
+    "format": "{stateIcon} {artist} -  {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{stateIcon} {artist} -  {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+    "artist-len": 15,
+    "title-len": 15,
+    "consume-icons": {
+      "on": " " // Icon shows only when "consume" is on
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": " "
+    },
+    "state-icons": {
+      "paused": "󰏤",
+      "playing": "󰐊"
+    }
+    // "tooltip-format": "MPD (connected)",
+    // "tooltip-format-disconnected": "MPD (disconnected)",
+    // "on-click": "mpc toggle",
+    // "on-click-middle": "alacritty -e ncmpcpp"
+  }
+
+  //  "custom/ibus": {
+  //    "interval": 1,
+  //    "format": "{icon}",
+  //    "format-icons": {
+  //      "Bamboo": "VN",
+  //      "BambooUs": "EN"
+  //    },
+  //    "exec": "jq --arg ibusEngine \"$(ibus engine)\" '. + { \"alt\": $ibusEngine }' --null-input --unbuffered --compact-output",
+  //    "return-type": "json",
+  //    "on-click": "toggle_ibus",
+  //    "signal": 1
+  //  }
+
+  // "custom/pacman": {
+  //   "format": " {}",
+  //   "interval" : 100,
+  //   "exec" : "~/.local/scripts/checkupdate",
+  //   "exec-if" : "exit 0",
+  //   "on-click": "alacritty -e paru"
+  // },
+}
+
+// "mpris": {
+//    "format": "DEFAULT: {player_icon} {artist} : {title} - [{length}]",
+//    "format-paused": "DEFAULT: {status_icon} {artist} : {title} - [{length}]",
+//    "player-icons": {
+//      "default": "▶",
+//      "mpv": "🎵"
+//    },
+//    "status-icons": {
+//      "paused": "⏸"
+//    },
+//    "ignored-players": ["firefox"]
+//  },
+
+// "custom/spotify": {
+//   "exec": "/usr/bin/python3 ~/.config/hypr/mediaplayer.py --player spotify",
+//   "format": " {}",
+//   "return-type": "json",
+//   "on-click": "spotifyctl -q playpause",
+//   "on-scroll-up": "spotifyctl -q next",
+//   "on-scroll-down": "spotifyctl -q previous"
+//  },
+//
+//
+// "custom/pomo": {
+//   "format": " {}",
+//   "interval" : 100,
+//   "exec" : "pomo status",
+//   "exec-if" : "exit 0"
+// },
+//
+// "custom/pomo": {
+//   "format": " {}",
+//   "interval" : 100,
+//   "exec" : "pomo status",
+//   "exec-if" : "exit 0"
+// },
+//

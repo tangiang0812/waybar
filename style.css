@@ -1,0 +1,146 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: JetBrains Mono Nerd Font;
+  font-weight: 600;
+  font-size: 15px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #24283b;
+  color: #a9b1d6;
+}
+
+#workspaces {
+  /* background-color: #32344a; */
+  background-color: #24283b;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#workspaces button {
+  padding: 2px 8px;
+  margin: 0px 5px 0px 5px;
+  color: #24283b;
+  border-radius: 5px;
+  background-color: #bb9af7;
+}
+
+#workspaces button.empty {
+  color: #a9b1d6;
+  /* background-color: #32344a; */
+  background-color: #444b6a;
+}
+
+#workspaces button.active {
+  color: #24283b;
+  background-color: #7aa2f7;
+}
+
+#workspaces button.urgent {
+  color: #24283b;
+  background-color: #f7768e;
+}
+
+#workspaces button:hover {
+  transition: none;
+  color: #24283b;
+  background: #e0af68;
+}
+
+#clock,
+#wireplumber,
+#backlight,
+#tray,
+#network,
+#cpu,
+#temperature,
+#memory,
+#disk,
+#battery {
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  /* background-color: #32344a; */
+  /* background-color: #3c3e5c; */
+  background-color: #444b6a;
+  padding: 0px 10px;
+  margin: 6px 0px;
+}
+
+#clock {
+  color: #f7768e;
+  border-radius: 5px 0px 0px 5px;
+  margin-left: 10px;
+  border-right: none;
+}
+
+#wireplumber {
+  color: #7aa2f7;
+  border-radius: 5px 0px 0px 5px;
+  margin-left: 10px;
+}
+
+#backlight {
+  color: #7aa2f7;
+  border-radius: 0px 5px 5px 0px;
+  border-left: none;
+}
+
+#battery {
+  color: #f7768e;
+  border-radius: 0px 5px 5px 0px;
+  border-left: none;
+  margin-right: 10px;
+}
+
+#battery.charging {
+  color: #0db9d7;
+  border-radius: 0px 5px 5px 0px;
+}
+
+#battery.warning:not(.charging) {
+  color: #24283b;
+  border-radius: 0px 5px 5px 0px;
+}
+
+#network {
+  margin-left: 10px;
+  color: #ff9e64;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#temperature {
+  margin-right: 10px;
+  color: #ff9e64;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#disk {
+  color: #b9f27c;
+  margin-right: 10px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#memory {
+  margin-right: 10px;
+  color: #7aa2f7;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#cpu {
+  color: #bb9af7;
+  margin-right: 10px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#tray {
+  color: #0db9d7;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+#tray > * {
+  padding: 0 2px;
+  margin: 0 2px;
+}
